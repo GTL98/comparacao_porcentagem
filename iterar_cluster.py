@@ -179,6 +179,7 @@ def iterar_cluster(clusters:str):
                 if cabecalho not in proteinas:
                     proteinas.append(cabecalho)
                     dic_bile_70[cluster] = proteinas
+        comparacao(dic_bile_50, dic_bile_70, 'Sais biliares')
 
     if item_70 == 'adesao_70':
         for cluster in adesao_70:
@@ -190,6 +191,7 @@ def iterar_cluster(clusters:str):
                 if cabecalho not in proteinas:
                     proteinas.append(cabecalho)
                     dic_adesao_70[cluster] = proteinas
+        comparacao(dic_adesao_50, dic_adesao_70, 'Proteína de adesão')
 
     if item_70 == 'carbono_70':
         for cluster in carbono_50:
@@ -200,7 +202,8 @@ def iterar_cluster(clusters:str):
                 cabecalho = cabecalho.replace('MULTISPECIES: ', '').replace('metabolismo carbono', '').strip()
                 if cabecalho not in proteinas:
                     proteinas.append(cabecalho)
-                    dic_carbono_50[cluster] = proteinas
+                    dic_carbono_70[cluster] = proteinas
+        comparacao(dic_carbono_50, dic_carbono_70, 'Metabolismo do carbono')
 
     if item_70 == 'estresse_70':
         for cluster in estresse_50:
@@ -211,7 +214,8 @@ def iterar_cluster(clusters:str):
                 cabecalho = cabecalho.replace('MULTISPECIES: ', '').replace('metabolismo carbono', '').replace('resistencia estresse', '').replace('estresse calor', '').strip()
                 if cabecalho not in proteinas:
                     proteinas.append(cabecalho)
-                    dic_estresse_50[cluster] = proteinas
+                    dic_estresse_70[cluster] = proteinas
+        comparacao(dic_estresse_50, dic_estresse_70, 'Resistência ao estresse')
 
     if item_70 == 'manosidase_70':
         for cluster in manosidase_50:
@@ -222,7 +226,8 @@ def iterar_cluster(clusters:str):
                 cabecalho = cabecalho.replace('MULTISPECIES: ', '').replace('Alpha-mannosidase manosidase', 'Alpha-mannosidase').strip()
                 if cabecalho not in proteinas:
                     proteinas.append(cabecalho)
-                    dic_manosidase_50[cluster] = proteinas
+                    dic_manosidase_70[cluster] = proteinas
+        comparacao(dic_manosidase_50, dic_manosidase_70, 'Manosidase')
 
     if item_70 == 'fosfolipase_70':
         for cluster in fosfolipase_70:
@@ -234,6 +239,7 @@ def iterar_cluster(clusters:str):
                 if cabecalho not in proteinas:
                     proteinas.append(cabecalho)
                     dic_fosfolipase_70[cluster] = proteinas
+        comparacao(dic_fosfolipase_50, dic_fosfolipase_70, 'Fosfolipase')
 
     if item_70 == 'acido_folico_70':
         for cluster in acido_folico_70:
@@ -244,7 +250,8 @@ def iterar_cluster(clusters:str):
                 cabecalho = cabecalho.replace('MULTISPECIES: ', '').replace('acido folico', '').replace('cido folico', '').strip()
                 if cabecalho not in proteinas:
                     proteinas.append(cabecalho)
-                    dic_acido_folico_50[cluster] = proteinas
+                    dic_acido_folico_70[cluster] = proteinas
+        comparacao(dic_acido_folico_50, dic_acido_folico_70, 'Ácido fólico')
 
     if item_70 == 'bacteriocinas_70':
         for cluster in bacteriocinas_70:
@@ -256,6 +263,7 @@ def iterar_cluster(clusters:str):
                 if cabecalho not in proteinas:
                     proteinas.append(cabecalho)
                     dic_bacteriocinas_70[cluster] = proteinas
+        comparacao(dic_bacteriocinas_50, dic_bacteriocinas_70, 'Bacteriocinas')
 
     if item_70 == 'betagalactosidase_70':
         for cluster in betagalactosidase_70:
@@ -267,4 +275,5 @@ def iterar_cluster(clusters:str):
                 if cabecalho not in proteinas:
                     proteinas.append(cabecalho)
                     dic_betagalactosidase_70[cluster] = proteinas
+        comparacao(dic_betagalactosidase_50, dic_betagalactosidase_70, 'Betagalactosidase')
         

@@ -18,32 +18,38 @@ def comparacao(proteinas_50: dict, proteinas_70: dict, tipo: str):
             if proteina not in lista_proteinas_70:
                 lista_proteinas_70.append(proteina)
 
-    # --- Comparar as listas (50% a 59%) --- #
-    proteinas = ''
-    for proteina in lista_proteinas_50:
-        if proteina not in lista_proteinas_70:
-            proteinas += f'{proteina}%'
-            
-    print(f'{tipo}')
-    print(f'\tProteínas de 50% a 69%:')
-    proteinas_split = proteinas.split('%')
-    for proteina in proteinas_split:
-        if proteina != '':
-            for cluster, proteinas in proteinas_50.items():
-                if proteina in proteinas:
-                    print(f'\t\t{proteina} (Cluster: {cluster})')
 
-    # --- Comparar as listas (>=70%) --- #
-    proteinas = ''
-    for proteina in lista_proteinas_70:
-        if proteina not in lista_proteinas_50:
-            proteinas += f'{proteina}%'
-            
-    print(f'\tProteínas >= 70%:')
-    proteinas_split = proteinas.split('%')
-    for proteina in proteinas_split:
-        if proteina != '':
-            for cluster, proteinas in proteinas_70.items():
-                if proteina in proteinas:
-                    print(f'\t\t{proteina} (Cluster: {cluster})')
+    # --- Colocar todas as informações dentro de um documento --- #
+    with open('comparacao.txt', 'a') as txt:
+        # --- Comparar as listas (50% a 59%) --- #
+        proteinas = ''  # se não retornar nenhum valor, indica que as proteínas tem semelhança de >=50%
+        for proteina in lista_proteinas_50:
+            if proteina not in lista_proteinas_70:
+                proteinas += f'{proteina}%'
+
+        txt.write(f'{tipo}\n')
+        txt.write('\tProteínas de 50% a 69%:\n')
+        proteinas_split = proteinas.split('%')
+        for proteina in proteinas_split:
+            if proteina != '':
+                for cluster, proteinas in proteinas_50.items():
+                    if proteina in proteinas:
+                        txt.write(f'\t\t- {proteina} (Cluster: {cluster})\n')
+
+        # --- Comparar as listas (>=70%) --- #
+        proteinas = ''
+        for proteina in lista_proteinas_70:
+            if proteina not in lista_proteinas_50:
+                proteinas += f'{proteina}%'
+                
+        txt.write('\tProteínas >= 70%:\n')
+        proteinas_split = proteinas.split('%')
+        for proteina in proteinas_split:
+            if proteina != '':
+                for cluster, proteinas in proteinas_70.items():
+                    if proteina in proteinas:
+                        txt.write(f'\t\t- {proteina} (Cluster: {cluster})\n')
+        txt.write('\n\n')
+
+    print('Arquivo criado!')
     

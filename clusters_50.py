@@ -12,6 +12,8 @@ estresse_50 = [
     7100,
     7859
     ]
+    
+tolerancia_acido_50 = [7217]
 
 adesao_50 = [
     7071,

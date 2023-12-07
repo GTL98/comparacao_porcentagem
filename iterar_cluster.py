@@ -29,6 +29,7 @@ def iterar_cluster(clusters:str):
     dic_fosfolipase_50 = {}
     dic_acido_folico_50 = {}
     dic_bacteriocinas_50 = {}
+    dic_tolerancia_acido_50 = {}
     dic_betagalactosidase_50 = {}
 
     # --- Listas de cada função 70% --- #
@@ -41,6 +42,7 @@ def iterar_cluster(clusters:str):
     dic_fosfolipase_70 = {}
     dic_acido_folico_70 = {}
     dic_bacteriocinas_70 = {}
+    dic_tolerancia_acido_70 = {}
     dic_betagalactosidase_70 = {}
     
     
@@ -144,6 +146,17 @@ def iterar_cluster(clusters:str):
                     proteinas.append(cabecalho)
                     dic_bacteriocinas_50[cluster] = proteinas
 
+    if item_50 == 'tolerancia_acido_50':
+        for cluster in tolerancia_acido_50:
+            registro = SeqIO.parse(f'{caminho_50}/Cluster_{cluster}.fasta', 'fasta')
+            proteinas = []
+            for entrada in registro:
+                cabecalho = entrada.description.split('|')[1].split('.1')[1].split('[')[0].strip()
+                cabecalho = cabecalho.replace('MULTISPECIES: ', '').replace('tolerancia gastro', '').strip()
+                if cabecalho not in proteinas:
+                    proteinas.append(cabecalho)
+                    dic_tolerancia_acido_50[cluster] = proteinas
+
     if item_50 == 'betagalactosidase_50':
         for cluster in betagalactosidase_50:
             registro = SeqIO.parse(f'{caminho_50}/Cluster_{cluster}.fasta', 'fasta')
@@ -155,7 +168,7 @@ def iterar_cluster(clusters:str):
                     proteinas.append(cabecalho)
                     dic_betagalactosidase_50[cluster] = proteinas
 
-    # --- Iterar sobre cada cluster 50 % --- #
+    # --- Iterar sobre cada cluster 70 % --- #
     if item_70 == 'eps_70':
         for cluster in eps_70:
             registro = SeqIO.parse(f'{caminho_70}/Cluster_{cluster}.fasta', 'fasta')
@@ -264,6 +277,18 @@ def iterar_cluster(clusters:str):
                     proteinas.append(cabecalho)
                     dic_bacteriocinas_70[cluster] = proteinas
         comparacao(dic_bacteriocinas_50, dic_bacteriocinas_70, 'Bacteriocinas')
+
+    if item_70 == 'tolerancia_acido_70':
+        for cluster in tolerancia_acido_70:
+            registro = SeqIO.parse(f'{caminho_70}/Cluster_{cluster}.fasta', 'fasta')
+            proteinas = []
+            for entrada in registro:
+                cabecalho = entrada.description.split('|')[1].split('.1')[1].split('[')[0].strip()
+                cabecalho = cabecalho.replace('MULTISPECIES: ', '').replace('tolerancia gastro', '').strip()
+                if cabecalho not in proteinas:
+                    proteinas.append(cabecalho)
+                    dic_tolerancia_acido_70[cluster] = proteinas
+        comparacao(dic_tolerancia_acido_50, dic_tolerancia_acido_70, 'Tolerância ácido estomacal')
 
     if item_70 == 'betagalactosidase_70':
         for cluster in betagalactosidase_70:
